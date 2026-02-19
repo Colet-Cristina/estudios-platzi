@@ -1,0 +1,75 @@
+/*  Generales y de la Página */
+body {
+  background-color: #714227;
+  /* font-family: Arial, sans-serif; */
+  color: #cea48e;
+  margin: 0;
+  padding: 0rem;
+}
+.header {
+  background-color: #382920; /* Tu marrón oscuro */
+  margin: 0; /* Asegura que no tenga margen */
+  padding: 0.5rem 0; /* Ajusta el relleno arriba y abajo a tu gusto */
+  width: 100%; /* Ocupa todo el ancho */
+}
+.main {
+  border-top: 0.2rem solid #000; /* Línea negra divisoria */
+}
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  padding-top: 1rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+.text-subtitle {
+  display: block;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+/* Tarjeta*/
+.card {
+  background-color: #bb8466;
+  border-radius: 0.5rem; /* Bordes redondeados */
+  padding: 0.7rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.6); /* Sombra sólida */
+  color: #382920;
+  text-align: center;
+  margin: 2rem;
+}
+
+.card-img {
+  width: 100%; /* Ocupa todo el ancho de la tarjeta */
+  height: 200px; /* Altura fija para que todas sean iguales */
+  object-fit: cover; /* Recorta la imagen para que no se deforme */
+  border-radius: 0.4rem; /* Bordes suavizados como tus tarjetas */
+  margin-bottom: 1rem; /* Espacio con el título */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #000000;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+
+.card-description {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+}
+.footer {
+  background-color: #382920; /* Tu marrón oscuro */
+  margin: 0; /* Asegura que no tenga margen */
+  padding: 0.5rem 0; /* Ajusta el relleno arriba y abajo a tu gusto */
+  width: 100%; /* Ocupa todo el ancho */
+  text-align: center;
+}
