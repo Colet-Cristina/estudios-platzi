@@ -1,4 +1,4 @@
-/*  Generales y de la Página */
+/* ------------ GENERAL AND PAGE ------------ */
 body {
   background-color: #714227;
   /* font-family: Arial, sans-serif; */
@@ -7,10 +7,10 @@ body {
   padding: 0rem;
 }
 .header {
-  background-color: #382920; /* Tu marrón oscuro */
-  margin: 0; /* Asegura que no tenga margen */
-  padding: 0.5rem 0; /* Ajusta el relleno arriba y abajo a tu gusto */
-  width: 100%; /* Ocupa todo el ancho */
+  background-color: #382920;
+  margin: 0;
+  padding: 0.5rem 0;
+  width: 100%;
 }
 .main {
   border-top: 0.2rem solid #000; /* Línea negra divisoria */
@@ -35,7 +35,14 @@ body {
   margin-top: 0.4rem;
 }
 
-/* Tarjeta*/
+/* ------------ CARD ------------ */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
 .card {
   background-color: #bb8466;
   border-radius: 0.5rem; /* Bordes redondeados */
@@ -43,15 +50,19 @@ body {
   box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.6); /* Sombra sólida */
   color: #382920;
   text-align: center;
-  margin: 2rem;
+  margin: 2rem auto;
+
+  width: 70%;
 }
 
 .card-img {
-  width: 100%; /* Ocupa todo el ancho de la tarjeta */
-  height: 200px; /* Altura fija para que todas sean iguales */
-  object-fit: cover; /* Recorta la imagen para que no se deforme */
-  border-radius: 0.4rem; /* Bordes suavizados como tus tarjetas */
-  margin-bottom: 1rem; /* Espacio con el título */
+  width: 100%;
+  height: 15rem;
+  object-fit: contain;
+  background-color: #e4dac9;
+  box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.6);
+  border-radius: 0.4rem;
+  margin-bottom: 1rem;
 }
 
 .card-title {
@@ -66,10 +77,32 @@ body {
   line-height: 1.4;
   margin: 0;
 }
+
+/* ------------ FOOTER ------------ */
 .footer {
   background-color: #382920; /* Tu marrón oscuro */
   margin: 0; /* Asegura que no tenga margen */
   padding: 0.5rem 0; /* Ajusta el relleno arriba y abajo a tu gusto */
   width: 100%; /* Ocupa todo el ancho */
   text-align: center;
+}
+
+/* ------------ queries ------------ */
+@media (min-width: 768px) {
+  .app-container {
+    flex-direction: row; /* Cambiamos a filas */
+    flex-wrap: wrap; /* Si no caben, bajan a la siguiente fila */
+    justify-content: center;
+    align-items: stretch; /* Que la misma fila midan lo mismo de alto */
+  }
+
+  .card {
+    flex: 1 0 30%; /* Todas crezcan por igual, que no se basen en el contenido interno y tamaño base. */
+    max-width: 350px;
+  }
+  .card-img {
+    width: 100%;
+    height: 18rem;
+    object-fit: cover;
+  }
 }
