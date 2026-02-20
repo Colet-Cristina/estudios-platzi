@@ -4,7 +4,9 @@ body {
   /* font-family: Arial, sans-serif; */
   color: #cea48e;
   margin: 0;
-  padding: 0rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .header {
   background-color: #382920;
@@ -14,6 +16,7 @@ body {
 }
 .main {
   border-top: 0.2rem solid #000; /* Línea negra divisoria */
+  flex-grow: 1;
 }
 .title {
   font-size: 2.5rem;
@@ -42,12 +45,13 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  margin: 3rem;
 }
 .card {
   background-color: #bb8466;
   border-radius: 0.5rem; /* Bordes redondeados */
   padding: 0.7rem;
-  box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.6); /* Sombra sólida */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 10); /* Sombra sólida */
   color: #382920;
   text-align: center;
   margin: 2rem auto;
@@ -80,11 +84,15 @@ body {
 
 /* ------------ FOOTER ------------ */
 .footer {
-  background-color: #382920; /* Tu marrón oscuro */
-  margin: 0; /* Asegura que no tenga margen */
-  padding: 0.5rem 0; /* Ajusta el relleno arriba y abajo a tu gusto */
+  background-color: #382920;
+  margin: 0;
+  padding: 1.5rem 0; /* Ajusta el relleno arriba y abajo */
   width: 100%; /* Ocupa todo el ancho */
   text-align: center;
+}
+.text-footer {
+  margin: 0.2rem 0; /* Esto reduce el espacio entre las líneas del footer */
+  font-size: 0.9rem;
 }
 
 /* ------------ queries ------------ */
