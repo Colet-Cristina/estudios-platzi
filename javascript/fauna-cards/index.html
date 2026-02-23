@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/main.css" />
@@ -25,8 +25,76 @@
         <h2 class="subtitle">Fauna Ibérica</h2>
         <p class="text-subtitle js_textSubtitle">Especies Protegidas</p>
       </section>
+
+      <!-- ---------- FILTERS ---------- -->
+
+      <section class="filters js-filters">
+        <div class="search-group js_searchGroup">
+          <!-- ---------- NAME ---------- -->
+          <div class="input">
+            <label for="nameSearch">Nombre:</label>
+            <input
+              type="text"
+              id="nameSearch"
+              placeholder="Ej: Lince..."
+              class="search-name js_searchName"
+            />
+          </div>
+          <!-- ---------- ---------- -->
+
+          <!-- ---------- HABITAT---------- -->
+          <div class="input">
+            <label for="habitatSearch">Hábitat:</label>
+            <input
+              type="text"
+              id="habitatSearch"
+              placeholder="Ej: Doñana..."
+              class="search-input"
+            />
+          </div>
+          <!-- ---------- ---------- -->
+
+          <!-- ---------- FAMILY---------- -->
+          <div class="input">
+            <label for="familySelect">Familia:</label>
+            <select id="familySelect" class="search-input">
+              <option value="all">Todas las familias</option>
+              <option value="Félido">Félidos</option>
+              <option value="Cánido">Cánidos</option>
+              <option value="Accipítrido">Accipítridos (Aves rapaces)</option>
+              <option value="Úrsido">Úrsidos (Osos)</option>
+              <option value="Mustélido">Mustélidos</option>
+              <option value="Anátido">Anátidos</option>
+              <option value="Salamándrido">Anfibios</option>
+            </select>
+          </div>
+          <!-- ---------- ---------- -->
+
+          <!-- ---------- STATUS ---------- -->
+          <div class="input-wrapper">
+            <label for="statusSelect">Estado:</label>
+            <select id="statusSelect" class="search-input">
+              <option value="all">Todos los estados</option>
+              <option value="En peligro de extinción">
+                En peligro de extinción
+              </option>
+              <option value="Vulnerable">Vulnerable</option>
+              <option value="Interés especial">Interés especial</option>
+              <option value="En peligro crítico">En peligro crítico</option>
+            </select>
+          </div>
+          <!-- ---------- ---------- -->
+
+          <!-- ---------- RESET ---------- -->
+          <button id="resetBtn" class="btn-reset">Limpiar Filtros</button>
+        </div>
+      </section>
+      <!-- ---------- ---------- -->
+
+      <!-- ----------   ------------     ---------- -->
       <div class="app-container js_appContainer" id="app"></div>
     </main>
+    ñ
     <!-- ---------- ---------- -->
 
     <footer class="footer js_footer">

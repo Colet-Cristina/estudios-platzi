@@ -1,12 +1,18 @@
 /* ------------ GENERAL AND PAGE ------------ */
 body {
   background-color: #714227;
-  /* font-family: Arial, sans-serif; */
+  font-family: "Nunito", sans-serif;
   color: #cea48e;
   margin: 0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.title,
+.subtitle,
+.card-title {
+  font-family: "Lora", serif;
 }
 .header {
   background-color: #382920;
@@ -59,6 +65,13 @@ body {
   width: 70%;
 }
 
+.card-scientific i {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #5d3a26;
+}
+
 .card-img {
   width: 100%;
   height: 15rem;
@@ -74,6 +87,10 @@ body {
   color: #000000;
   margin: 0 0 5px 0;
   font-weight: bold;
+}
+.card-category {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
 }
 
 .card-description {

@@ -16,7 +16,7 @@ const animals = [
     scientificName: `lynx pardinus`,
     habitat: `Doñana y Sierra Morena`,
     status: `En peligro de extinción`,
-    family: `Felino`,
+    family: `Félido`,
     image: `lince.png`,
     population: 2100,
   },
@@ -25,7 +25,7 @@ const animals = [
     scientificName: `felis silvestris`,
     habitat: `Bosques y matorrales de la Península`,
     status: `Interés especial (amenazado por hibridación)`,
-    family: `Felino`,
+    family: `Félido`,
     image: `gato.png`,
     population: 5000,
   },
@@ -34,16 +34,16 @@ const animals = [
     scientificName: `canis lupus signatus`,
     habitat: `Sierra de la Culebra y Galicia`,
     status: `En expansión controlada`,
-    family: `Canido`,
+    family: `Cánido`,
     image: `lobo.png`,
     population: 2500,
   },
   {
     commonName: `Águila Imperial`,
     scientificName: `aquila adalberti`,
-    habitat: `el centro y sur de España principalmente`,
+    habitat: `Centro y sur de España`,
     status: `Vulnerable`,
-    family: `Ave`,
+    family: `Accipítrido`,
     image: `aguila.png`,
     population: 800,
   },
@@ -52,17 +52,37 @@ const animals = [
     scientificName: `gypaetus barbatus`,
     habitat: `Pirineos y Picos de Europa`,
     status: `En peligro de extinción`,
-    family: `Ave`,
+    family: `Accipítrido`,
     image: `gyp.png`,
     population: 1000,
   },
   {
     commonName: `Buitre Negro`,
     scientificName: `aegypius monachus`,
-    habitat: `Monfragüe y Sierra de San Pedro`,
+    habitat: `Monfragüe, Sierra de San Pedro, Sierra de Guadarrama, Cabañeros y el Valle de Iruelas`,
     status: `Vulnerable`,
-    family: `Ave`,
+    family: `Accipítrido`,
     image: `monachus.png`,
+    population: 2500,
+  },
+
+  {
+    commonName: `Cigüeña Negra`,
+    scientificName: `ciconia nigra`,
+    habitat: `Sierras de Extremadura, Castilla-La Mancha y Castilla y León`,
+    status: `Vulnerable`,
+    family: `Ciconiido`,
+    image: `ciconia.png`,
+    population: 350,
+  },
+
+  {
+    commonName: `Malvasía Cabeciblanca`,
+    scientificName: `oxyura leucocephala`,
+    habitat: `Humedales del sur y levante`,
+    status: `En peligro de extinción`,
+    family: `Anátido`,
+    image: `malvasia.png`,
     population: 2500,
   },
 
@@ -71,17 +91,40 @@ const animals = [
     scientificName: `ursus arctos`,
     habitat: `Cordillera Cantábrica y Pirineos`,
     status: `En peligro de extinción`,
-    family: `Ursido`,
+    family: `Úrsido`,
     image: `oso.png`,
     population: 400,
   },
-];
 
-// Mapeo de colores
-const statusStyles = {
-  "En peligro de extinción": "#a52222",
-  Vulnerable: "#1d5072",
-};
+  {
+    commonName: `Visón Europeo`,
+    scientificName: `mustela lutreola`,
+    habitat: `Ríos del norte de España (Ebro y afluentes)`,
+    status: `En peligro crítico`,
+    family: `Mustélido`,
+    image: `vison.png`,
+    population: 500,
+  },
+
+  {
+    commonName: `Desmán Ibérico`,
+    scientificName: `galemys pyrenaicus`,
+    habitat: `Ríos limpios de montaña (norte y centro)`,
+    status: `Vulnerable`,
+    family: `Tálpido`,
+    image: `desman.png`,
+    population: 0, // Población muy fragmentada y difícil de censar
+  },
+  {
+    commonName: `Tritón Jaspeado`,
+    scientificName: `triturus marmoratus`,
+    habitat: `Charcas y estanques de la mitad norte`,
+    status: `Interés especial (amenazado por pérdida de hábitat)`,
+    family: `Salamándrido`,
+    image: `jaspe.png`,
+    population: 10000,
+  },
+];
 
 if (app) {
   let htmlContent = "";
@@ -96,19 +139,34 @@ if (app) {
       animal.scientificName.charAt(0).toUpperCase() +
       animal.scientificName.slice(1);
 
-    // 3. Creamos el string de estilo con interpolación.
-    const textColor = statusStyles[animal.status] || `#382920`;
-    const statusStyle = `color: ${textColor}`;
+    // Mapeo de colores
+    // const statusStyles = {
+    //   "En peligro de extinción": "#a52222",
+    //   Vulnerable: "#d4b83a",
+    // };
+    //  Creamos el string de estilo con interpolación.
+    // const textColor = statusStyles[animal.status] || `#382920`;
+    // const statusStyle = `color: ${textColor}`;
+
+    // Lògica de color con  IF/ELSE
+    let textColor = "#382920";
+
+    if (animal.status === "En peligro de extinción") {
+      textColor = "#a52222";
+    } else if (animal.status === "Vulnerable") {
+      textColor = "#d4b83a";
+    }
+    const statusStyle = `color: ${textColor}; font-weight: bold;`;
 
     htmlContent += `
       <section class="card">
         <h3 class="card-title js_cardTitle">${displayTitle}</h3>
         <p class="card-scientific"><i>${scientificFormat}</i></p> 
-        <img src="./images/${animal.image}" alt="${animal.commonName}" class="card-img">
-        <p class="card-description js_cardDescription">
-          ${animal.family} que habita en ${animal.habitat}.
+        <img src="./images/${animal.image}" alt="${animal.commonName}" class="card-img js_cardImg">
+        <p class="card-category js_cardCategory"> ${animal.family} </p>
+        <p class="card-description js_cardDescription"> <strong>Población principal:</strong> ${animal.habitat}.
         </p>
-        <p style="${statusStyle}"><strong>${animal.status}</strong></p>
+        <p style="${statusStyle}">${animal.status}</p>
       </section>
     `;
   });
