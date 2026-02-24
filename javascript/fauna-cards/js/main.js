@@ -1,15 +1,27 @@
 "use strict";
 
-// SECCIÓN DE QUERY-SELECTOR
-// Éstos son los elementos que nos traemos de la página HTML y usamos en el código
-const app = document.querySelector(`#app`);
+// SECCIÓN DE QUERY-SELECTOR ========================================
 
-// SECCIÓN DE DATOS
+const app = document.querySelector("#app");
+
+// Filtros de texto y select
+const inputName = document.querySelector(`.js_searchName`);
+const selectFamily = document.querySelector(`.js_searchFamily`);
+const selectStatus = document.querySelector(`.js_searchStatus`);
+
+// Filtros de checkbox
+const checkMammal = document.querySelector(`.js_checkMammal`);
+const checkBird = document.querySelector(`.js_checkBird`);
+const checkAmphibian = document.querySelector(`.js_checkAmphibian`);
+
+// Botón de reset
+const resetBtn = document.querySelector(`.js_resetBtn`);
+
+// SECCIÓN DE DATOS  ========================================
 // Variables globales que almacenan la información principal de la aplicación y se usan por todo el fichero.
 const subtitle = `Fauna Ibérica`;
 const textSubtitle = `Especies Protegidas`;
 
-// Creamos array para los animales
 const animals = [
   {
     commonName: `Lince Ibérico`,
@@ -18,7 +30,7 @@ const animals = [
     status: `En peligro de extinción`,
     family: `Félido`,
     image: `lince.png`,
-    population: 2100,
+    type: `mamifero`,
   },
   {
     commonName: `Gato Montés`,
@@ -27,7 +39,7 @@ const animals = [
     status: `Interés especial (amenazado por hibridación)`,
     family: `Félido`,
     image: `gato.png`,
-    population: 5000,
+    type: `mamifero`,
   },
   {
     commonName: `Lobo Ibérico`,
@@ -36,7 +48,7 @@ const animals = [
     status: `En expansión controlada`,
     family: `Cánido`,
     image: `lobo.png`,
-    population: 2500,
+    type: `mamifero`,
   },
   {
     commonName: `Águila Imperial`,
@@ -45,7 +57,7 @@ const animals = [
     status: `Vulnerable`,
     family: `Accipítrido`,
     image: `aguila.png`,
-    population: 800,
+    type: `ave`,
   },
   {
     commonName: `Quebrantahuesos`,
@@ -54,7 +66,7 @@ const animals = [
     status: `En peligro de extinción`,
     family: `Accipítrido`,
     image: `gyp.png`,
-    population: 1000,
+    type: `ave`,
   },
   {
     commonName: `Buitre Negro`,
@@ -63,7 +75,7 @@ const animals = [
     status: `Vulnerable`,
     family: `Accipítrido`,
     image: `monachus.png`,
-    population: 2500,
+    type: `ave`,
   },
 
   {
@@ -73,7 +85,7 @@ const animals = [
     status: `Vulnerable`,
     family: `Ciconiido`,
     image: `ciconia.png`,
-    population: 350,
+    type: `ave`,
   },
 
   {
@@ -83,7 +95,7 @@ const animals = [
     status: `En peligro de extinción`,
     family: `Anátido`,
     image: `malvasia.png`,
-    population: 2500,
+    type: `ave`,
   },
 
   {
@@ -93,7 +105,7 @@ const animals = [
     status: `En peligro de extinción`,
     family: `Úrsido`,
     image: `oso.png`,
-    population: 400,
+    type: `mamifero`,
   },
 
   {
@@ -103,7 +115,7 @@ const animals = [
     status: `En peligro crítico`,
     family: `Mustélido`,
     image: `vison.png`,
-    population: 500,
+    type: `mamifero`,
   },
 
   {
@@ -113,7 +125,7 @@ const animals = [
     status: `Vulnerable`,
     family: `Tálpido`,
     image: `desman.png`,
-    population: 0, // Población muy fragmentada y difícil de censar
+    type: `mamifero`,
   },
   {
     commonName: `Tritón Jaspeado`,
@@ -122,36 +134,29 @@ const animals = [
     status: `Interés especial (amenazado por pérdida de hábitat)`,
     family: `Salamándrido`,
     image: `jaspe.png`,
-    population: 10000,
+    type: `anfibio`,
   },
 ];
 
-if (app) {
+// SECCIÓN DE FUNCIONES
+
+//  Función para pintar las tarjetas.
+//  Recibe el array
+
+const renderAnimals = (data) => {
   let htmlContent = "";
 
-  // Recorremos el array para generar las tarjetas
-  animals.forEach((animal) => {
-    // Nombre en mayúsculas para el título
+  data.forEach((animal) => {
     const displayTitle = animal.commonName.toUpperCase();
-
-    // .charAt(0) busca la primera letra y .toUpperCase() la convierte en mayúsculas .slice(1) para que no corte la fease
     const scientificFormat =
       animal.scientificName.charAt(0).toUpperCase() +
       animal.scientificName.slice(1);
 
-    // Mapeo de colores
-    // const statusStyles = {
-    //   "En peligro de extinción": "#a52222",
-    //   Vulnerable: "#d4b83a",
-    // };
-    //  Creamos el string de estilo con interpolación.
-    // const textColor = statusStyles[animal.status] || `#382920`;
-    // const statusStyle = `color: ${textColor}`;
-
-    // Lògica de color con  IF/ELSE
     let textColor = "#382920";
-
-    if (animal.status === "En peligro de extinción") {
+    if (
+      animal.status === "En peligro de extinción" ||
+      animal.status === "En peligro crítico"
+    ) {
       textColor = "#a52222";
     } else if (animal.status === "Vulnerable") {
       textColor = "#d4b83a";
@@ -164,14 +169,86 @@ if (app) {
         <p class="card-scientific"><i>${scientificFormat}</i></p> 
         <img src="./images/${animal.image}" alt="${animal.commonName}" class="card-img js_cardImg">
         <p class="card-category js_cardCategory"> ${animal.family} </p>
-        <p class="card-description js_cardDescription"> <strong>Población principal:</strong> ${animal.habitat}.
+        <p class="card-description js_cardDescription"> 
+          <strong>Población principal:</strong> ${animal.habitat}.
         </p>
         <p style="${statusStyle}">${animal.status}</p>
       </section>
     `;
   });
 
-  app.innerHTML = htmlContent;
+  app.innerHTML =
+    htmlContent ||
+    `<p class="no-results">No se han encontrado especies que coincidan con los filtros.</p>`;
+};
 
-  console.log(`¡Se han cargado ${animals.length} animales!`);
+//  Función que unifica toda la lógica de filtrado
+
+const applyFilters = () => {
+  const searchName = inputName.value.toLowerCase();
+  const searchFamily = selectFamily.value;
+  const searchStatus = selectStatus.value;
+
+  const isMammal = checkMammal.checked;
+  const isBird = checkBird.checked;
+  const isAmphibian = checkAmphibian.checked;
+
+  const filteredAnimals = animals.filter((animal) => {
+    // Filtro Nombre
+    const matchName = animal.commonName.toLowerCase().includes(searchName);
+
+    // Filtro Familia
+    const matchFamily =
+      searchFamily === "all" || animal.family === searchFamily;
+
+    // Filtro Estado
+    const matchStatus =
+      searchStatus === "all" || animal.status === searchStatus;
+
+    // Filtro Checkbox
+    let matchType = true;
+    if (isMammal || isBird || isAmphibian) {
+      matchType =
+        (isMammal && animal.type === "mamifero") ||
+        (isBird && animal.type === "ave") ||
+        (isAmphibian && animal.type === "anfibio");
+    }
+
+    return matchName && matchFamily && matchStatus && matchType;
+  });
+
+  renderAnimals(filteredAnimals);
+};
+// SECCIÓN DE FUNCIONES DE EVENTOS
+const handleInputFilter = (event) => {
+  applyFilters();
+};
+
+const handleReset = (event) => {
+  event.preventDefault();
+  // Reseteamos el formulario
+  inputName.value = "";
+  selectFamily.value = "all";
+  selectStatus.value = "all";
+  checkMammal.checked = false;
+  checkBird.checked = false;
+  checkAmphibian.checked = false;
+  // Repintamos todo
+  renderAnimals(animals);
+};
+// SECCIÓN DE EVENTOS
+inputName.addEventListener("input", handleInputFilter);
+selectFamily.addEventListener("change", handleInputFilter);
+selectStatus.addEventListener("change", handleInputFilter);
+
+[checkMammal, checkBird, checkAmphibian].forEach((checkbox) => {
+  checkbox.addEventListener("change", handleInputFilter);
+});
+
+if (resetBtn) {
+  resetBtn.addEventListener("click", handleReset);
 }
+
+// SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA
+renderAnimals(animals);
+console.log(`¡Se han cargado ${animals.length} animales!`);

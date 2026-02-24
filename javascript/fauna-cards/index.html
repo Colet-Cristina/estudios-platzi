@@ -26,12 +26,12 @@
         <p class="text-subtitle js_textSubtitle">Especies Protegidas</p>
       </section>
 
-      <!-- ---------- FILTERS ---------- -->
+      <!-- ---------- ------------- FILTERS ------------- ---------- -->
 
       <section class="filters js-filters">
         <div class="search-group js_searchGroup">
           <!-- ---------- NAME ---------- -->
-          <div class="input">
+          <div class="input-name js_inputName">
             <label for="nameSearch">Nombre:</label>
             <input
               type="text"
@@ -42,22 +42,10 @@
           </div>
           <!-- ---------- ---------- -->
 
-          <!-- ---------- HABITAT---------- -->
-          <div class="input">
-            <label for="habitatSearch">Hábitat:</label>
-            <input
-              type="text"
-              id="habitatSearch"
-              placeholder="Ej: Doñana..."
-              class="search-input"
-            />
-          </div>
-          <!-- ---------- ---------- -->
-
           <!-- ---------- FAMILY---------- -->
-          <div class="input">
+          <div class="input-family js_inputFamily">
             <label for="familySelect">Familia:</label>
-            <select id="familySelect" class="search-input">
+            <select id="familySelect" class="search-family js_searchFamily">
               <option value="all">Todas las familias</option>
               <option value="Félido">Félidos</option>
               <option value="Cánido">Cánidos</option>
@@ -71,9 +59,9 @@
           <!-- ---------- ---------- -->
 
           <!-- ---------- STATUS ---------- -->
-          <div class="input-wrapper">
+          <div class="input-status js_inputStatus">
             <label for="statusSelect">Estado:</label>
-            <select id="statusSelect" class="search-input">
+            <select id="statusSelect" class="search-status js_searchStatus">
               <option value="all">Todos los estados</option>
               <option value="En peligro de extinción">
                 En peligro de extinción
@@ -83,10 +71,43 @@
               <option value="En peligro crítico">En peligro crítico</option>
             </select>
           </div>
-          <!-- ---------- ---------- -->
+          <!-- ---------- CATEGORIES ---------- -->
+          <div class="input-categories js_inputCategories">
+            <label class="category-label js_categoryLabel">Categorías:</label>
+            <div class="checkbox-group js_checkboxGroup">
+              <label class="check-item js_checkItem">
+                <input
+                  type="checkbox"
+                  class="check-mammal js_checkMammal"
+                  value="mamifero"
+                />
+                <span class="name-check js_nameCheck"> Mamíferos</span>
+              </label>
 
-          <!-- ---------- RESET ---------- -->
-          <button id="resetBtn" class="btn-reset">Limpiar Filtros</button>
+              <label class="check-item js_checkItem">
+                <input
+                  type="checkbox"
+                  class="check-bird js_checkBird"
+                  value="ave"
+                />
+                <span class="name-check js_nameCheck"> Aves</span>
+              </label>
+
+              <label class="check-item js_checkItem">
+                <input
+                  type="checkbox"
+                  class="check-amphibian js_checkAmphibian"
+                  value="anfibio"
+                />
+                <span class="name-check js_nameCheck"> Anfibios</span>
+              </label>
+
+              <!-- ---------- RESET ---------- -->
+              <button id="resetBtn" class="btn-reset js_resetBtn">
+                Limpiar Filtros
+              </button>
+            </div>
+          </div>
         </div>
       </section>
       <!-- ---------- ---------- -->
@@ -94,13 +115,12 @@
       <!-- ----------   ------------     ---------- -->
       <div class="app-container js_appContainer" id="app"></div>
     </main>
-    ñ
     <!-- ---------- ---------- -->
 
     <footer class="footer js_footer">
-      <p class="text-footer">© 2026 - Fauna Ibérica</p>
+      <p class="text-footer js_textFooter">© 2026 - Fauna Ibérica</p>
       <span>Hecho con 💜 y mucho ☕</span>
-      <p class="text-footer">
+      <p class="text-footer js_textFooter">
         <small>Imágenes co-creadas con IA (Gemini)</small>
       </p>
     </footer>
