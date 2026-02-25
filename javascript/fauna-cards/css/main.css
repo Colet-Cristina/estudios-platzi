@@ -2,7 +2,7 @@
 body {
   background-color: #714227;
   font-family: "Nunito", sans-serif;
-  color: #cea48e;
+  color: #bb8466;
   margin: 0;
   min-height: 100vh;
   display: flex;
@@ -118,6 +118,7 @@ body {
   align-items: center;
   transition: all 0.2s ease;
   user-select: none;
+  background-color: transparent;
 }
 
 .check-item:hover {
@@ -132,6 +133,9 @@ body {
   color: #cea48e;
 }
 
+.check-item:has(input:checked) .name-check {
+  color: #cea48e;
+}
 .check-item input {
   margin-right: 0.5rem;
   accent-color: #382920;
@@ -155,6 +159,27 @@ body {
   background-color: #bd7751;
   color: #382920;
 }
+
+/* ------------ ---- COUNTER ---- ------------ */
+.info-results {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.counter {
+  background-color: #bb8466;
+  border: 0.0625rem solid #382920;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.6);
+  font-family: "Nunito", sans-serif;
+  color: #382920;
+  display: inline-block;
+  min-width: 12.5rem; /* 200px -> 12.5rem */
+  text-align: center;
+}
+
 /* ------------ ---- CARD ---- ------------ */
 
 .app-container {
@@ -162,7 +187,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  margin: 3rem;
+  margin: 0.3rem 3rem 3rem 3rem;
 }
 .card {
   background-color: #bb8466;

@@ -1,0 +1,110 @@
+[
+  {
+    "commonName": "Lince Ibérico",
+    "scientificName": "lynx pardinus",
+    "habitat": "Doñana y Sierra Morena",
+    "status": "En peligro de extinción",
+    "family": "Félido",
+    "image": "lince.png",
+    "type": "mamifero"
+  },
+  {
+    "commonName": "Gato Montés",
+    "scientificName": "felis silvestris",
+    "habitat": "Bosques y matorrales de la Península",
+    "status": "Interés especial (amenazado por hibridación)",
+    "family": "Félido",
+    "image": "gato.png",
+    "type": "mamifero"
+  },
+  {
+    "commonName": "Lobo Ibérico",
+    "scientificName": "canis lupus signatus",
+    "habitat": "Sierra de la Culebra y Galicia",
+    "status": "En expansión controlada",
+    "family": "Cánido",
+    "image": "lobo.png",
+    "type": "mamifero"
+  },
+  {
+    "commonName": "Águila Imperial",
+    "scientificName": "aquila adalberti",
+    "habitat": "Centro y sur de España",
+    "status": "Vulnerable",
+    "family": "Accipítrido",
+    "image": "aguila.png",
+    "type": "ave"
+  },
+  {
+    "commonName": "Quebrantahuesos",
+    "scientificName": "gypaetus barbatus",
+    "habitat": "Pirineos y Picos de Europa",
+    "status": "En peligro de extinción",
+    "family": "Accipítrido",
+    "image": "gyp.png",
+    "type": "ave"
+  },
+  {
+    "commonName": "Buitre Negro",
+    "scientificName": "aegypius monachus",
+    "habitat": "Monfragüe, Sierra de San Pedro, Sierra de Guadarrama, Cabañeros y el Valle de Iruelas",
+    "status": "Vulnerable",
+    "family": "Accipítrido",
+    "image": "monachus.png",
+    "type": "ave"
+  },
+  {
+    "commonName": "Cigüeña Negra",
+    "scientificName": "ciconia nigra",
+    "habitat": "Extremadura, Castilla-La Mancha y Castilla y León",
+    "status": "Vulnerable",
+    "family": "Ciconiido",
+    "image": "ciconia.png",
+    "type": "ave"
+  },
+  {
+    "commonName": "Malvasía Cabeciblanca",
+    "scientificName": "oxyura leucocephala",
+    "habitat": "Humedales del sur y levante",
+    "status": "En peligro de extinción",
+    "family": "Anátido",
+    "image": "malvasia.png",
+    "type": "ave"
+  },
+  {
+    "commonName": "Oso Pardo",
+    "scientificName": "ursus arctos",
+    "habitat": "Cordillera Cantábrica y Pirineos",
+    "status": "En peligro de extinción",
+    "family": "Úrsido",
+    "image": "oso.png",
+    "type": "mamifero"
+  },
+  {
+    "commonName": "Visón Europeo",
+    "scientificName": "mustela lutreola",
+    "habitat": "Ríos del norte de España (Ebro y afluentes)",
+    "status": "En peligro crítico",
+    "family": "Mustélido",
+    "image": "vison.png",
+    "type": "mamifero"
+  },
+  {
+    "commonName": "Desmán Ibérico",
+    "scientificName": "galemys pyrenaicus",
+    "habitat": "Ríos limpios de montaña (norte y centro)",
+    "status": "Vulnerable",
+    "family": "Tálpido",
+    "image": "desman.png",
+    "type": "mamifero"
+  },
+  {
+    "commonName": "Tritón Jaspeado",
+    "scientificName": "triturus marmoratus",
+    "habitat": "Charcas y estanques de la mitad norte",
+    "status": "Interés especial (amenazado por pérdida de hábitat)",
+    "family": "Salamándrido",
+    "image": "jaspe.png",
+    "type": "anfibio"
+  }
+]

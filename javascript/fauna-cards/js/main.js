@@ -17,148 +17,60 @@ const checkAmphibian = document.querySelector(`.js_checkAmphibian`);
 // Botón de reset
 const resetBtn = document.querySelector(`.js_resetBtn`);
 
-// SECCIÓN DE DATOS  ========================================
-// Variables globales que almacenan la información principal de la aplicación y se usan por todo el fichero.
-const subtitle = `Fauna Ibérica`;
-const textSubtitle = `Especies Protegidas`;
+//Contador
+const counter = document.querySelector(`.js_counter`);
 
-const animals = [
-  {
-    commonName: `Lince Ibérico`,
-    scientificName: `lynx pardinus`,
-    habitat: `Doñana y Sierra Morena`,
-    status: `En peligro de extinción`,
-    family: `Félido`,
-    image: `lince.png`,
-    type: `mamifero`,
-  },
-  {
-    commonName: `Gato Montés`,
-    scientificName: `felis silvestris`,
-    habitat: `Bosques y matorrales de la Península`,
-    status: `Interés especial (amenazado por hibridación)`,
-    family: `Félido`,
-    image: `gato.png`,
-    type: `mamifero`,
-  },
-  {
-    commonName: `Lobo Ibérico`,
-    scientificName: `canis lupus signatus`,
-    habitat: `Sierra de la Culebra y Galicia`,
-    status: `En expansión controlada`,
-    family: `Cánido`,
-    image: `lobo.png`,
-    type: `mamifero`,
-  },
-  {
-    commonName: `Águila Imperial`,
-    scientificName: `aquila adalberti`,
-    habitat: `Centro y sur de España`,
-    status: `Vulnerable`,
-    family: `Accipítrido`,
-    image: `aguila.png`,
-    type: `ave`,
-  },
-  {
-    commonName: `Quebrantahuesos`,
-    scientificName: `gypaetus barbatus`,
-    habitat: `Pirineos y Picos de Europa`,
-    status: `En peligro de extinción`,
-    family: `Accipítrido`,
-    image: `gyp.png`,
-    type: `ave`,
-  },
-  {
-    commonName: `Buitre Negro`,
-    scientificName: `aegypius monachus`,
-    habitat: `Monfragüe, Sierra de San Pedro, Sierra de Guadarrama, Cabañeros y el Valle de Iruelas`,
-    status: `Vulnerable`,
-    family: `Accipítrido`,
-    image: `monachus.png`,
-    type: `ave`,
-  },
+// SECCIÓN DE DATOS  ===============================================
 
-  {
-    commonName: `Cigüeña Negra`,
-    scientificName: `ciconia nigra`,
-    habitat: `Sierras de Extremadura, Castilla-La Mancha y Castilla y León`,
-    status: `Vulnerable`,
-    family: `Ciconiido`,
-    image: `ciconia.png`,
-    type: `ave`,
-  },
+// Array vacío
+let animals = [];
 
-  {
-    commonName: `Malvasía Cabeciblanca`,
-    scientificName: `oxyura leucocephala`,
-    habitat: `Humedales del sur y levante`,
-    status: `En peligro de extinción`,
-    family: `Anátido`,
-    image: `malvasia.png`,
-    type: `ave`,
-  },
+// Traemos los datos con fetch
+const getData = () => {
+  fetch("./data/data.json")
+    .then((response) => {
+      if (!response.ok) throw new Error("Error al recibir los datos");
+      return response.json();
+    })
+    .then((data) => {
+      animals = data; // Guardamos los datos en la variable
+      renderAnimals(animals); // Pintamos
+    })
+    .catch((error) => {
+      console.error("Hubo un fallo:", error);
+      app.innerHTML = `<p>Error al cargar la base de datos de fauna.</p>`;
+    });
+};
 
-  {
-    commonName: `Oso Pardo`,
-    scientificName: `ursus arctos`,
-    habitat: `Cordillera Cantábrica y Pirineos`,
-    status: `En peligro de extinción`,
-    family: `Úrsido`,
-    image: `oso.png`,
-    type: `mamifero`,
-  },
-
-  {
-    commonName: `Visón Europeo`,
-    scientificName: `mustela lutreola`,
-    habitat: `Ríos del norte de España (Ebro y afluentes)`,
-    status: `En peligro crítico`,
-    family: `Mustélido`,
-    image: `vison.png`,
-    type: `mamifero`,
-  },
-
-  {
-    commonName: `Desmán Ibérico`,
-    scientificName: `galemys pyrenaicus`,
-    habitat: `Ríos limpios de montaña (norte y centro)`,
-    status: `Vulnerable`,
-    family: `Tálpido`,
-    image: `desman.png`,
-    type: `mamifero`,
-  },
-  {
-    commonName: `Tritón Jaspeado`,
-    scientificName: `triturus marmoratus`,
-    habitat: `Charcas y estanques de la mitad norte`,
-    status: `Interés especial (amenazado por pérdida de hábitat)`,
-    family: `Salamándrido`,
-    image: `jaspe.png`,
-    type: `anfibio`,
-  },
-];
-
-// SECCIÓN DE FUNCIONES
+// SECCIÓN DE FUNCIONES =============================================
 
 //  Función para pintar las tarjetas.
 //  Recibe el array
 
-const renderAnimals = (data) => {
+const renderAnimals = (data, totalCount = animals.length) => {
   let htmlContent = "";
 
+  // Contador
+  if (counter) {
+    counter.innerHTML = `Mostrando <strong>${data.length}</strong> de <strong>${totalCount}</strong> animales`;
+  }
   data.forEach((animal) => {
-    const displayTitle = animal.commonName.toUpperCase();
-    const scientificFormat =
-      animal.scientificName.charAt(0).toUpperCase() +
-      animal.scientificName.slice(1);
+    // Desestructuración para un código más limpio
+    const { commonName, scientificName, family, status, image, habitat } =
+      animal;
 
+    const displayTitle = commonName.toUpperCase();
+    const scientificFormat =
+      scientificName.charAt(0).toUpperCase() + scientificName.slice(1);
+
+    // Lógica de colores
     let textColor = "#382920";
     if (
-      animal.status === "En peligro de extinción" ||
-      animal.status === "En peligro crítico"
+      status === "En peligro de extinción" ||
+      status === "En peligro crítico"
     ) {
       textColor = "#a52222";
-    } else if (animal.status === "Vulnerable") {
+    } else if (status === "Vulnerable") {
       textColor = "#d4b83a";
     }
     const statusStyle = `color: ${textColor}; font-weight: bold;`;
@@ -167,12 +79,12 @@ const renderAnimals = (data) => {
       <section class="card">
         <h3 class="card-title js_cardTitle">${displayTitle}</h3>
         <p class="card-scientific"><i>${scientificFormat}</i></p> 
-        <img src="./images/${animal.image}" alt="${animal.commonName}" class="card-img js_cardImg">
-        <p class="card-category js_cardCategory"> ${animal.family} </p>
+        <img src="./images/${image}" alt="${commonName}" class="card-img js_cardImg">
+        <p class="card-category js_cardCategory"> ${family} </p>
         <p class="card-description js_cardDescription"> 
-          <strong>Población principal:</strong> ${animal.habitat}.
+          <strong>Población principal:</strong> ${habitat}.
         </p>
-        <p style="${statusStyle}">${animal.status}</p>
+        <p style="${statusStyle}">${status}</p>
       </section>
     `;
   });
@@ -182,7 +94,7 @@ const renderAnimals = (data) => {
     `<p class="no-results">No se han encontrado especies que coincidan con los filtros.</p>`;
 };
 
-//  Función que unifica toda la lógica de filtrado
+//  Función para la lógica de filtrado
 
 const applyFilters = () => {
   const searchName = inputName.value.toLowerCase();
@@ -219,7 +131,7 @@ const applyFilters = () => {
 
   renderAnimals(filteredAnimals);
 };
-// SECCIÓN DE FUNCIONES DE EVENTOS
+// SECCIÓN DE EVENTOS ===============================================
 const handleInputFilter = (event) => {
   applyFilters();
 };
@@ -236,7 +148,7 @@ const handleReset = (event) => {
   // Repintamos todo
   renderAnimals(animals);
 };
-// SECCIÓN DE EVENTOS
+
 inputName.addEventListener("input", handleInputFilter);
 selectFamily.addEventListener("change", handleInputFilter);
 selectStatus.addEventListener("change", handleInputFilter);
@@ -250,5 +162,4 @@ if (resetBtn) {
 }
 
 // SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA
-renderAnimals(animals);
-console.log(`¡Se han cargado ${animals.length} animales!`);
+getData();
