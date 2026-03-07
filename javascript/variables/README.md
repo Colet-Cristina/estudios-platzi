@@ -1,7 +1,7 @@
 🌲 Prácticas de JavaScript: Fauna Ibérica
 Este repositorio contiene ejercicios de programación con JavaScript, centrados en la manipulación de cadenas de texto (Strings), variables y el uso de la propiedad .length.
 
-![Captura pantalla](/img/captura.png)
+![Captura pantalla](./img/captura.png)
 
 📋 Conceptos Practicados
 En este proyecto he aplicado los siguientes conceptos:
