@@ -2,7 +2,7 @@
 Este repositorio contiene ejercicios de programación con JavaScript, centrados en la manipulación de cadenas de texto (Strings), variables y el uso de la propiedad .length.
 
 <p align="center">
-  <img src="./img/captura.png" alt="Captura de pantalla del ejercicio" width="600">
+  <img src="https://github.com/Colet-Cristina/estudios-platzi/blob/main/javascript/variables/img/Captura.png" alt="Captura de pantalla del ejercicio" width="600">
 </p>
 
 📋 Conceptos Practicados
