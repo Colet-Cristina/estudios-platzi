@@ -54,7 +54,7 @@ let boneHabitat = `Pirineos`;
 // 4. Comprobamos si incluye "Pirineos"
 let bonePirineos = boneHabitat.includes(`Pirineos`);
 
-// . Mostramos el resultado con estilo (usando backticks siempre)
+// . Mostramos el resultado (usando backticks siempre)
 console.log(`El nombre oficial es: ${birdName}`);
 console.log(`Su "apodo" extraído es: ${birdNickname}`);
 console.log(`¿El hábitat incluye los Pirineos?: ${bonePirineos}`);

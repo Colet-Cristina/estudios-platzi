@@ -1,18 +1,27 @@
 # 🌿 Naturaleza en Código: Fauna Ibérica
 
-Este es un proyecto educativo desarrollado para practicar los fundamentos de **JavaScript**, manipulación del **DOM** y estilos dinámicos con **CSS**.
+Este proyecto ha sido desarrollado como parte del Curso `Fundamentos de JavaScript de Platzi`, aplicando conceptos avanzados de gestión de datos asíncronos y diseño responsivo con CSS moderno. La aplicación permite explorar la biodiversidad de la península, filtrando especies por su estado de conservación, familia y tipo.
 
 ## 🚀 Funcionalidades
 
-- **Generación Dinámica:** Las tarjetas de los animales se crean automáticamente a partir de un array de objetos.
-- **Formateo de Strings:** Uso de métodos como `.toUpperCase()` y `.slice()` para normalizar nombres científicos.
-- **Cálculo de Datos:** Implementación de `.reduce()` para calcular la población total protegida.
+- **Carga Asíncrona (Fetch):** Los datos no están "hardcodeados"; se consumen desde un archivo externo `./data/data.json`.
+- **Sistema de Filtrado Combinado:** Permite buscar por nombre, seleccionar por familia/estado y filtrar por categorías (Checkboxes) de forma simultánea.
+- **Contador Dinámico:** Informa al usuario en tiempo real sobre cuántos resultados se muestran del total de la base de datos.
+- **Interfaz Reactiva:** Gracias a la pseudo-clase `:has()`, los contenedores de los filtros reaccionan visualmente cuando el input está marcado.
+- **Formateo de Datos:** Uso de métodos como `.toUpperCase()` y `.slice()` para normalizar la presentación de los nombres.
 
-## 🛠️ Tecnologías utilizadas
+## 🛠️ Tecnologías Utilizadas
 
-- **HTML5:** Estructura semántica.
-- **CSS3:** Diseño responsivo con Flexbox/Grid y variables de color.
-- **JavaScript:** \* Arrays y Objetos.
-  - Métodos de array (`forEach`, `reduce`).
-  - Interpolación de strings con `` `backticks` ``.
-  - Manipulación del DOM (`querySelector`, `innerHTML`).
+- **HTML5:** Estructura semántica y formularios accesibles.
+- **CSS3:** - Layout mediante **Flexbox**.
+  - Uso de unidades relativas `rem` para accesibilidad.
+  - Selectores modernos como `:has()` para estados de componentes.
+- **JavaScript (ES6+):**
+  - **Asincronía:** Uso de `fetch` y promesas (`.then`, `.catch`).
+  - **Métodos de Array:** `.filter()` para la búsqueda y `.forEach()` para el renderizado.
+  - **Desestructuración:** Extracción limpia de propiedades de objetos.
+  - **Template Strings:** Interpolación de variables con `` `backticks` `` para generar HTML dinámico.
+
+> [!NOTE]
+
+> [Certificado Platzi](https://platzi.com/evaluacion/123c21dc-ed33-43b4-9586-ed625aa13085/).
